@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${titulo}"></title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<style>
+.centrar {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.lead {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+</style>
+
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarTogglerDemo03"
+			aria-controls="navbarTogglerDemo03" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		
+		<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+				<li class="nav-item active"><a class="nav-link" th:href="@{/Articulos}">Articulos<span class="sr-only">(current)</span></a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/listadoClientes}">Clientes</a>
+				<li class="nav-item"><a class="nav-link" th:href="@{/DetalleFacturas}">Detalle Facturas</a>
+				<li class="nav-item"><a class="nav-link" th:href="@{/Factura}">Factura</a>
+				<li class="nav-item"><a class="nav-link" th:href="@{/Proveedores}">Proveedor</a>
+				
+			</ul>
+			<form class="form-inline my-2 my-lg-0">
+				<input class="form-control mr-sm-2" type="search"
+					placeholder="Search" aria-label="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+			</form>
+		</div>
+	</nav>
+
+	<div class="jumbotron">
+		<h1 class=centrar>MERCADOS CHAPINERO</h1>
+		<p class="lead">CONTROL DE INVENTARIOS Y VENTAS</p>
+		
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+<a class="btn btn-primary btn-lg" th:href="@{/listadoClientes}"role="button" >Ver Clientes</a>
+</html>
