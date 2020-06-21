@@ -5,20 +5,20 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.example.demo.Entity.Cliente;
-import com.example.demo.dao.ICrudPrueba;
+import com.example.demo.Entity.Articulo;
+import com.example.demo.dao.ICrudArticulos;
 
 @Service
-public class ImplePruebaFactura implements IFactura_Prueba {
+public class ImpleArticulos implements IArticulos {
 
 	@Autowired
-	ICrudPrueba CrudPrueba;
+	ICrudArticulos CrudArticulo;
 
 	@Override
 	@Transactional
-	public List<Cliente> findall() {
+	public List<Articulo> findall() {
 		
-		return (List<Cliente>) CrudPrueba.findAll();
+		return (List<Articulo>) CrudArticulo.findAll();
 		
 		
 	}

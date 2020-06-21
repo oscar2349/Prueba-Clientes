@@ -4,6 +4,8 @@ package com.example.demo.Entity;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.stream.Collector;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -140,7 +142,8 @@ public class Proveedor implements Serializable {
 
     @XmlTransient
     public Collection<Articulo> getArticuloCollection() {
-        return articuloCollection;
+    	
+    	 return articuloCollection;
     }
 
     public void setArticuloCollection(Collection<Articulo> articuloCollection) {
@@ -156,7 +159,6 @@ public class Proveedor implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Proveedor)) {
             return false;
         }

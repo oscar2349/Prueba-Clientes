@@ -1,17 +1,46 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8" />
-<title th:text="${titulo}"></title>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<head th:replace="Layout/Layout :: Head"/>
 
-
-</head>
 <body>
 
-	articulos
-	
-</body>
+<header th:replace="Layout/Layout :: NavBar"/>
 
+<div class="jumbotron">
+	<h3 class="font-weight-bold">Articulos</h3>
+
+</div>
+
+
+
+<table class="table table-striped">
+		<thead>
+			<tr class="font-weight-bold">
+				<th>Cod Articulo</th>
+				<th>caracteristicas</th>
+				<th>Nombre Articulo</th>
+				<th>Proveedor CIF Proveedor</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="articulo: ${Listado}">
+				<td th:text="${articulo.codArticulo}"></td>
+				<td th:text="${articulo.caracteristicas}"></td>
+				<td th:text="${articulo.nombreArticulo}"></td>
+				<td th:text="${articulo.proveedorCIFProveedor}"></td>
+			</tr>
+		</tbody>
+	</table>
+
+
+
+
+
+
+
+
+
+<footer th:replace="Layout/Layout :: Footer"></footer>
+
+</body>
 </html>

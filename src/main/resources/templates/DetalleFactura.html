@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8" />
-<title th:text="${titulo}"></title>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<head th:replace="Layout/Layout :: Head"/>
 
 <body>
-Detalle Factura
-</body>
 
+<header th:replace="Layout/Layout :: NavBar"/>
+
+<div class="jumbotron">
+	<h3 class="font-weight-bold">Detalle Factura</h3>
+
+</div>
+
+<footer th:replace="Layout/Layout :: Footer"></footer>
+
+</body>
 </html>

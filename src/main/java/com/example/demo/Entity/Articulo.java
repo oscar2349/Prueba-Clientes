@@ -34,13 +34,17 @@ public class Articulo implements Serializable {
     @Basic(optional = false)
     @Column(name = "Cod_Articulo")
     private Integer codArticulo;
+    
     @Column(name = "NombreArticulo")
     private String nombreArticulo;
+    
     @Column(name = "Caracteristicas")
     private String caracteristicas;
+    
     @JoinColumn(name = "Proveedor_CIF_Proveedor", referencedColumnName = "CIF_Proveedor")
     @ManyToOne(optional = false)
     private Proveedor proveedorCIFProveedor;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "articuloCodArticulo")
     private Collection<DetalleFactura> detalleFacturaCollection;
 
@@ -75,8 +79,8 @@ public class Articulo implements Serializable {
         this.caracteristicas = caracteristicas;
     }
 
-    public Proveedor getProveedorCIFProveedor() {
-        return proveedorCIFProveedor;
+    public Integer getProveedorCIFProveedor() {
+        return proveedorCIFProveedor.getCIFProveedor();
     }
 
     public void setProveedorCIFProveedor(Proveedor proveedorCIFProveedor) {

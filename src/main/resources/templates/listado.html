@@ -1,21 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8" />
-<title th:text="${titulo}"></title>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<style>
-.BotonInferior {
-	position: absolute; 
-	left:10px; 
-	right: 10px;
-	bottom: 20px;
-	height:20px;
-}
-</style>
-</head>
+<head th:replace="Layout/Layout :: Head"/>
+
 <body>
+
+<header th:replace="Layout/Layout :: NavBar"/>
+
+
 	<table class="table table-striped">
 		<thead>
 			<tr class="font-weight-bold">
@@ -42,19 +33,9 @@
 				<td th:text="${cliente.ciudad}"></td>
 				<td th:text="${cliente.provincia}"></td>
 				<td th:text="${cliente.pais}"></td>
-
 			</tr>
 		</tbody>
 	</table>
-
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
-<div class="BotonInferior">
-	<a class="btn btn-primary btn-lg" th:href="@{/}" role="button">Volver
-		a Inicio</a>
-</div>
+<footer th:replace="Layout/Layout :: Footer"></footer>
 </html>

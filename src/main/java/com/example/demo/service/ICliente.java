@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.example.demo.Entity.Cliente;
 
-public interface IFactura_Prueba {
+public interface ICliente {
 	
 	public List<Cliente> findall();
 
