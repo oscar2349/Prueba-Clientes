@@ -6,6 +6,8 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.criteria.CriteriaBuilder.In;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -62,12 +64,12 @@ public class FacturaController {
 	public String guardar(Ingreso Ingreso, Model model) {
 		
 		Factura factura = new Factura();
-		factura.setNumeroFactura(123);
+		factura.setNumeroFactura(Ingreso.getNumeroFactura());
 		
-		Cliente cliente = ICliente.findOne(1);
+		Cliente cliente = ICliente.findOne(Ingreso.getNumeroCliente());
 		Proveedor proveedor= new Proveedor();
 		
-		Articulo articulo = IArticulos.findOne(5);
+		Articulo articulo = IArticulos.findOne(Ingreso.getNumeroArticulo());
 		
 		List<Articulo> listarticulos= new ArrayList<>();
 		listarticulos.add(articulo);
@@ -79,7 +81,7 @@ public class FacturaController {
 		detallefactura.setArticulocodArticulo(articulo);
 		detallefactura.setFacturanumeroFactura(factura);
 		detallefactura.setPorcentajeGanancia("20");
-		detallefactura.setCantidad("200");
+		detallefactura.setCantidad(Ingreso.getCantidad());
 		List<DetalleFactura>Listdetalle= new ArrayList<DetalleFactura>();
 		Listdetalle.add(detallefactura);
 		articulo.setDetalleFacturaCollection(Listdetalle);

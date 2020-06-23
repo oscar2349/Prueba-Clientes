@@ -14,13 +14,46 @@
 			method="post">
 
 			<div class="form-group row">
-				<label class="col-sm-2 col-form-label">Id Proveedor</label>
+				<label class="col-sm-2 col-form-label">Numero Factura</label>
 				<div class="col-sm-6">
-					<input type="text" th:field="*{idProveedor}" class="form-control"
+					<input type="text" th:field="*{numeroFactura}" class="form-control"
 						th:errorclass="'form-control alert-danger'" /> <small
 						class="form-text text-danger"
-						th:if="${#fields.hasErrors('idProveedor')}"
-						th:errors="*{idProveedor}"></small>
+						th:if="${#fields.hasErrors('numeroFactura')}"
+						th:errors="*{numeroFactura}"></small>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Numero Cliente Registrado</label>
+				<div class="col-sm-6">
+					<input type="text" th:field="*{numeroCliente}" class="form-control"
+						th:errorclass="'form-control alert-danger'" /> <small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('numeroCliente')}"
+						th:errors="*{numeroCliente}"></small>
+				</div>
+			</div>
+			
+		<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Numero Articulo Registrado</label>
+				<div class="col-sm-6">
+					<input type="text" th:field="*{numeroArticulo}" class="form-control"
+						th:errorclass="'form-control alert-danger'" /> <small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('numeroArticulo')}"
+						th:errors="*{numeroArticulo}"></small>
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Numero Articulo Registrado</label>
+				<div class="col-sm-6">
+					<input type="text" th:field="*{cantidad}" class="form-control"
+						th:errorclass="'form-control alert-danger'" /> <small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('cantidad')}"
+						th:errors="*{cantidad}"></small>
 				</div>
 			</div>
 

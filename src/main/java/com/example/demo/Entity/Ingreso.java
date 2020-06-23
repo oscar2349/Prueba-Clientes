@@ -6,6 +6,8 @@ public class Ingreso {
 
 	int numeroFactura;
 	int numeroCliente;
+	String cantidad;
+
 
 	int idProveedor;
 	int numeroArticulo;
@@ -42,7 +44,12 @@ public class Ingreso {
 	public void setDetalle(int detalle) {
 		this.detalle = detalle;
 	}
-
+	public String getCantidad() {
+		return cantidad;
+	}
+	public void setCantidad(String cantidad) {
+		this.cantidad = cantidad;
+	}
 	
 	
 	
