@@ -60,44 +60,35 @@ public class FacturaController {
 	@RequestMapping(value = "/crear/factura", method = RequestMethod.POST)
 	
 	public String guardar(Ingreso Ingreso, Model model) {
+		
 		Factura factura = new Factura();
 		factura.setNumeroFactura(123);
 		
 		Cliente cliente = ICliente.findOne(1);
-		Articulo articulo = new Articulo();
+		Proveedor proveedor= new Proveedor();
 		
-				
-		Proveedor proveedor= Iproveedor.findbyId(1);
-		
-		articulo.setProveedorcifProveedor(proveedor);
-		articulo.setCaracteristicas("Vaso mesa");
-		articulo.setCodArticulo(1);
-		articulo.setNombreArticulo("Decoracion");
+		Articulo articulo = IArticulos.findOne(5);
 		
 		List<Articulo> listarticulos= new ArrayList<>();
 		listarticulos.add(articulo);
 			
-		
-		
-		DetalleFactura detallefactura= new DetalleFactura();
-		
+		proveedor.setArticuloCollection(listarticulos);
 	
-		
+		/********************************/
+		DetalleFactura detallefactura= new DetalleFactura();
 		detallefactura.setArticulocodArticulo(articulo);
 		detallefactura.setFacturanumeroFactura(factura);
-		detallefactura.setPorcentajeGanancia("200");
-		detallefactura.setCantidad("400");
-		List<DetalleFactura>Listdetalle= new ArrayList();
+		detallefactura.setPorcentajeGanancia("20");
+		detallefactura.setCantidad("200");
+		List<DetalleFactura>Listdetalle= new ArrayList<DetalleFactura>();
 		Listdetalle.add(detallefactura);
+		articulo.setDetalleFacturaCollection(Listdetalle);
 	
+		/************************/
 		factura.setClienteCifCliente(cliente);
 		factura.setFechaFactura(new Date());
-		factura.setDetalleFacturaList(Listdetalle);
-		
-	
-		
+		factura.setDetalleFacturaList(Listdetalle);	
 		Factura.save(factura);
-		
 		
 		return "redirect:../";
 

@@ -101,19 +101,6 @@ public class DetalleFactura implements Serializable {
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof DetalleFactura)) {
-            return false;
-        }
-        DetalleFactura other = (DetalleFactura) object;
-        if ((this.numeroDetalleFactura == null && other.numeroDetalleFactura != null) || (this.numeroDetalleFactura != null && !this.numeroDetalleFactura.equals(other.numeroDetalleFactura))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
     public String toString() {
         return "entities.DetalleFactura[ numeroDetalleFactura=" + numeroDetalleFactura + " ]";
     }

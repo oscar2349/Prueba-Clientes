@@ -2,6 +2,8 @@ package com.example.demo.Entity;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -145,7 +147,7 @@ public class Proveedor implements Serializable {
         return articuloCollection;
     }
 
-    public void setArticuloCollection(Collection<Articulo> articuloCollection) {
+    public void setArticuloCollection(List<Articulo> articuloCollection) {
         this.articuloCollection = articuloCollection;
     }
 
@@ -156,18 +158,6 @@ public class Proveedor implements Serializable {
         return hash;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Proveedor)) {
-            return false;
-        }
-        Proveedor other = (Proveedor) object;
-        if ((this.cifProveedor == null && other.cifProveedor != null) || (this.cifProveedor != null && !this.cifProveedor.equals(other.cifProveedor))) {
-            return false;
-        }
-        return true;
-    }
 
     @Override
     public String toString() {
