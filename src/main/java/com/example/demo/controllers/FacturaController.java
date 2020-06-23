@@ -64,8 +64,7 @@ public class FacturaController {
 	public String guardar(Ingreso Ingreso, Model model) {
 		
 		Factura factura = new Factura();
-		factura.setNumeroFactura(Ingreso.getNumeroFactura());
-		
+	
 		Cliente cliente = ICliente.findOne(Ingreso.getNumeroCliente());
 		Proveedor proveedor= new Proveedor();
 		

@@ -18,7 +18,7 @@
 				<th>Numero Detalle</th>
 				<th>Cantidad</th>
 				<th>Porcentaje de Ganancia</th>
-				<th>Codigo Aticulo</th>
+				<th>Codigo Articulo</th>
 				<th>Numero de Factura</th>
 			</tr>
 		</thead>
@@ -27,8 +27,8 @@
 				<td th:text="${detalle.numeroDetalleFactura}"></td>
 				<td th:text="${detalle.cantidad}"></td>
 				<td th:text="${detalle.porcentajeGanancia}"></td>
-				<td th:text="${detalle.articuloCodArticulo}"></td>
-				<td th:text="${detalle.facturaNumeroFactura}"></td>
+				<td th:text="${detalle.articulocodArticulo.codArticulo}"></td>
+				<td th:text="${detalle.facturanumeroFactura.numeroFactura}"></td>
 				
 			</tr>
 		</tbody>

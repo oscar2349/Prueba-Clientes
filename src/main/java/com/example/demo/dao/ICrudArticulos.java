@@ -6,4 +6,6 @@ import com.example.demo.Entity.Articulo;
 
 public interface ICrudArticulos extends CrudRepository <Articulo,Integer> {
 	
+	
+	
 }

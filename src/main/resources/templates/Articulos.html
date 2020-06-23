@@ -23,9 +23,9 @@
 		<tbody>
 			<tr th:each="articulo: ${Listado}">
 				<td th:text="${articulo.codArticulo}"></td>
-<!-- 				<td th:text="${articulo.caracteristicas}"></td> -->
-<!-- 				<td th:text="${articulo.nombreArticulo}"></td> -->
-<!-- 				<td th:text="${articulo.ProveedorCifProveedor}"></td> -->
+ 				<td th:text="${articulo.caracteristicas}"></td> 
+ 				<td th:text="${articulo.nombreArticulo}"></td> 
+ 				<td th:text="${articulo.proveedorcifProveedor.cifProveedor}"></td>
 			</tr>
 		</tbody>
 	</table>
