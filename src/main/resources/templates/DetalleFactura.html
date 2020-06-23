@@ -11,6 +11,30 @@
 
 </div>
 
+
+<table class="table table-striped">
+		<thead>
+			<tr class="font-weight-bold">
+				<th>Numero Detalle</th>
+				<th>Cantidad</th>
+				<th>Porcentaje de Ganancia</th>
+				<th>Codigo Aticulo</th>
+				<th>Numero de Factura</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="detalle: ${Listado}">
+				<td th:text="${detalle.numeroDetalleFactura}"></td>
+				<td th:text="${detalle.cantidad}"></td>
+				<td th:text="${detalle.porcentajeGanancia}"></td>
+				<td th:text="${detalle.articuloCodArticulo}"></td>
+				<td th:text="${detalle.facturaNumeroFactura}"></td>
+				
+			</tr>
+		</tbody>
+	</table>
+
+
 <footer th:replace="Layout/Layout :: Footer"></footer>
 
 </body>

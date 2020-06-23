@@ -1,7 +1,6 @@
 package com.example.demo.Entity;
 
 
-
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -16,7 +15,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
-
 @Entity
 @Table(name = "DetalleFactura")
 @XmlRootElement
@@ -28,21 +26,25 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class DetalleFactura implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Column(name = "Cantidad")
+    @Column(name = "cantidad")
     private String cantidad;
-    @Column(name = "PorcentajeGanancia")
+    
+    @Column(name = "porcentajeGanancia")
     private String porcentajeGanancia;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "NumeroDetalleFactura")
+    @Column(name = "numeroDetalleFactura")
     private Integer numeroDetalleFactura;
-    @JoinColumn(name = "Articulo_Cod_Articulo", referencedColumnName = "Cod_Articulo")
+    
+    @JoinColumn(name = "Articulo_cod_Articulo", referencedColumnName = "cod_Articulo")
     @ManyToOne(optional = false)
-    private Articulo articuloCodArticulo;
-    @JoinColumn(name = "Factura_NumeroFactura", referencedColumnName = "NumeroFactura")
+    private Articulo articulocodArticulo;
+    
+    @JoinColumn(name = "Factura_numeroFactura", referencedColumnName = "numeroFactura")
     @ManyToOne(optional = false)
-    private Factura facturaNumeroFactura;
+    private Factura facturanumeroFactura;
 
     public DetalleFactura() {
     }
@@ -75,20 +77,20 @@ public class DetalleFactura implements Serializable {
         this.numeroDetalleFactura = numeroDetalleFactura;
     }
 
-    public Articulo getArticuloCodArticulo() {
-        return articuloCodArticulo;
+    public Articulo getArticulocodArticulo() {
+        return articulocodArticulo;
     }
 
-    public void setArticuloCodArticulo(Articulo articuloCodArticulo) {
-        this.articuloCodArticulo = articuloCodArticulo;
+    public void setArticulocodArticulo(Articulo articulocodArticulo) {
+        this.articulocodArticulo = articulocodArticulo;
     }
 
-    public Factura getFacturaNumeroFactura() {
-        return facturaNumeroFactura;
+    public Factura getFacturanumeroFactura() {
+        return facturanumeroFactura;
     }
 
-    public void setFacturaNumeroFactura(Factura facturaNumeroFactura) {
-        this.facturaNumeroFactura = facturaNumeroFactura;
+    public void setFacturanumeroFactura(Factura facturanumeroFactura) {
+        this.facturanumeroFactura = facturanumeroFactura;
     }
 
     @Override

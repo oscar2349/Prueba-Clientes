@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.example.demo.Entity.Articulo;
+import com.example.demo.Entity.Cliente;
 import com.example.demo.Entity.Proveedor;
 import com.example.demo.dao.ICrudArticulos;
 import com.example.demo.dao.ICrudProveedor;
@@ -21,8 +22,13 @@ public class ImpleProveedor implements IProveedor {
 	public List<Proveedor> findall() {
 		
 		return (List<Proveedor>) CrudProveedor.findAll();
+				
+	}
+
+	@Override
+	public Proveedor findbyId(Integer id) {
 		
-		
+		return CrudProveedor.findById(id).orElse(null) ;
 	}
 
 	

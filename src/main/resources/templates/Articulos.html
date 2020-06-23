@@ -11,23 +11,21 @@
 
 </div>
 
-
-
 <table class="table table-striped">
 		<thead>
 			<tr class="font-weight-bold">
 				<th>Cod Articulo</th>
 				<th>caracteristicas</th>
 				<th>Nombre Articulo</th>
-				<th>Proveedor CIF Proveedor</th>
+				<th>CIF Proveedor</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr th:each="articulo: ${Listado}">
 				<td th:text="${articulo.codArticulo}"></td>
-				<td th:text="${articulo.caracteristicas}"></td>
-				<td th:text="${articulo.nombreArticulo}"></td>
-				<td th:text="${articulo.proveedorCIFProveedor}"></td>
+<!-- 				<td th:text="${articulo.caracteristicas}"></td> -->
+<!-- 				<td th:text="${articulo.nombreArticulo}"></td> -->
+<!-- 				<td th:text="${articulo.ProveedorCifProveedor}"></td> -->
 			</tr>
 		</tbody>
 	</table>

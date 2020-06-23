@@ -12,16 +12,23 @@ import com.example.demo.dao.ICrudCliente;
 public class ImpleCliente implements ICliente {
 
 	@Autowired
-	ICrudCliente CrudPrueba;
+	ICrudCliente CrudCliente;
 
 	@Override
 	@Transactional
 	public List<Cliente> findall() {
-		
-		return (List<Cliente>) CrudPrueba.findAll();
-		
-		
+
+		return (List<Cliente>) CrudCliente.findAll();
 	}
 
-	
+	@Override
+	public Cliente findOne(Integer id) {
+		return CrudCliente.findById(id).orElse(null);
+	}
+
+	@Override
+	public void save(Cliente cliente) {
+		CrudCliente.save(cliente);
+	}
+
 }

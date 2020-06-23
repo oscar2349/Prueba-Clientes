@@ -1,8 +1,9 @@
 package com.example.demo.Entity;
 
-
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,60 +19,62 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
-@Table(name = "Cliente")
+@Table(name = "cliente")
 @XmlRootElement
-
+@NamedQueries({
+    @NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c")
+    , @NamedQuery(name = "Cliente.findByCifCliente", query = "SELECT c FROM Cliente c WHERE c.cifCliente = :cifCliente")
+    , @NamedQuery(name = "Cliente.findByNombre", query = "SELECT c FROM Cliente c WHERE c.nombre = :nombre")
+    , @NamedQuery(name = "Cliente.findByApellido", query = "SELECT c FROM Cliente c WHERE c.apellido = :apellido")
+    , @NamedQuery(name = "Cliente.findBySegundoApellido", query = "SELECT c FROM Cliente c WHERE c.segundoApellido = :segundoApellido")
+    , @NamedQuery(name = "Cliente.findByNombreEmpresa", query = "SELECT c FROM Cliente c WHERE c.nombreEmpresa = :nombreEmpresa")
+    , @NamedQuery(name = "Cliente.findByDireccion", query = "SELECT c FROM Cliente c WHERE c.direccion = :direccion")
+    , @NamedQuery(name = "Cliente.findByCiudad", query = "SELECT c FROM Cliente c WHERE c.ciudad = :ciudad")
+    , @NamedQuery(name = "Cliente.findByCp", query = "SELECT c FROM Cliente c WHERE c.cp = :cp")
+    , @NamedQuery(name = "Cliente.findByProvincia", query = "SELECT c FROM Cliente c WHERE c.provincia = :provincia")
+    , @NamedQuery(name = "Cliente.findByPais", query = "SELECT c FROM Cliente c WHERE c.pais = :pais")})
 public class Cliente implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "CIF_Cliente")
-    private Integer cIFCliente;
-    
-    @Column(name = "Nombre")
+    @Basic(optional = false)
+    @Column(name = "cif_cliente")
+    private Integer cifCliente;
+    @Column(name = "nombre")
     private String nombre;
-    
-    @Column(name = "Apellido")
+    @Column(name = "apellido")
     private String apellido;
-    
-    @Column(name = "Apellido2")
-    private String apellido2;
-    
-    @Column(name = "NombreEmpresa")
+    @Column(name = "segundo_apellido")
+    private String segundoApellido;
+    @Column(name = "nombreEmpresa")
     private String nombreEmpresa;
-    
-    @Column(name = "Direccion")
+    @Column(name = "direccion")
     private String direccion;
-    
-    @Column(name = "Ciudad")
+    @Column(name = "ciudad")
     private String ciudad;
-    
-    @Column(name = "CP")
+    @Column(name = "cp")
     private Integer cp;
-    
-    @Column(name = "Provincia")
+    @Column(name = "provincia")
     private String provincia;
-    
-    @Column(name = "Pais")
+    @Column(name = "pais")
     private String pais;
-    
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "clienteCIFCliente")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "clienteCifCliente")
     private Collection<Factura> facturaCollection;
 
     public Cliente() {
     }
 
-    public Cliente(Integer cIFCliente) {
-        this.cIFCliente = cIFCliente;
+    public Cliente(Integer cifCliente) {
+        this.cifCliente = cifCliente;
     }
 
-    public Integer getCIFCliente() {
-        return cIFCliente;
+    public Integer getCifCliente() {
+        return cifCliente;
     }
 
-    public void setCIFCliente(Integer cIFCliente) {
-        this.cIFCliente = cIFCliente;
+    public void setCifCliente(Integer cifCliente) {
+        this.cifCliente = cifCliente;
     }
 
     public String getNombre() {
@@ -90,12 +93,12 @@ public class Cliente implements Serializable {
         this.apellido = apellido;
     }
 
-    public String getApellido2() {
-        return apellido2;
+    public String getSegundoApellido() {
+        return segundoApellido;
     }
 
-    public void setApellido2(String apellido2) {
-        this.apellido2 = apellido2;
+    public void setSegundoApellido(String segundoApellido) {
+        this.segundoApellido = segundoApellido;
     }
 
     public String getNombreEmpresa() {
@@ -151,14 +154,13 @@ public class Cliente implements Serializable {
         return facturaCollection;
     }
 
-    public void setFacturaCollection(Collection<Factura> facturaCollection) {
+    public void setFacturaCollection(List<Factura> facturaList) {
         this.facturaCollection = facturaCollection;
     }
 
     @Override
     public String toString() {
-        return "entities.Cliente[ cIFCliente=" + cIFCliente + " ]";
+        return "entities.Cliente[ cifCliente=" + cifCliente + " ]";
     }
 
 }
-

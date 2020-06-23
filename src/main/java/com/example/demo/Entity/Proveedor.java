@@ -1,11 +1,7 @@
 package com.example.demo.Entity;
 
-
-
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.stream.Collector;
-
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -20,19 +16,23 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+/**
+ * 
+ * @author Sammy Guergachi <sguergachi at gmail.com>
+ */
 @Entity
 @Table(name = "Proveedor")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Proveedor.findAll", query = "SELECT p FROM Proveedor p")
-    , @NamedQuery(name = "Proveedor.findByCIFProveedor", query = "SELECT p FROM Proveedor p WHERE p.cIFProveedor = :cIFProveedor")
+    , @NamedQuery(name = "Proveedor.findByCifProveedor", query = "SELECT p FROM Proveedor p WHERE p.cifProveedor = :cifProveedor")
     , @NamedQuery(name = "Proveedor.findByNombre", query = "SELECT p FROM Proveedor p WHERE p.nombre = :nombre")
     , @NamedQuery(name = "Proveedor.findByApellido", query = "SELECT p FROM Proveedor p WHERE p.apellido = :apellido")
     , @NamedQuery(name = "Proveedor.findByNombreEmpresa", query = "SELECT p FROM Proveedor p WHERE p.nombreEmpresa = :nombreEmpresa")
     , @NamedQuery(name = "Proveedor.findByDirrecion", query = "SELECT p FROM Proveedor p WHERE p.dirrecion = :dirrecion")
     , @NamedQuery(name = "Proveedor.findByCiudad", query = "SELECT p FROM Proveedor p WHERE p.ciudad = :ciudad")
     , @NamedQuery(name = "Proveedor.findByCp", query = "SELECT p FROM Proveedor p WHERE p.cp = :cp")
-    , @NamedQuery(name = "Proveedor.findByProvinicia", query = "SELECT p FROM Proveedor p WHERE p.provinicia = :provinicia")
+    , @NamedQuery(name = "Proveedor.findByProvincia", query = "SELECT p FROM Proveedor p WHERE p.provincia = :provincia")
     , @NamedQuery(name = "Proveedor.findByPais", query = "SELECT p FROM Proveedor p WHERE p.pais = :pais")})
 public class Proveedor implements Serializable {
 
@@ -40,40 +40,40 @@ public class Proveedor implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "CIF_Proveedor")
-    private Integer cIFProveedor;
-    @Column(name = "Nombre")
+    @Column(name = "cif_Proveedor")
+    private Integer cifProveedor;
+    @Column(name = "nombre")
     private String nombre;
-    @Column(name = "Apellido")
+    @Column(name = "apellido")
     private String apellido;
-    @Column(name = "Nombre_Empresa")
+    @Column(name = "nombre_Empresa")
     private String nombreEmpresa;
-    @Column(name = "Dirrecion")
+    @Column(name = "dirrecion")
     private String dirrecion;
-    @Column(name = "Ciudad")
+    @Column(name = "ciudad")
     private String ciudad;
-    @Column(name = "CP")
+    @Column(name = "cp")
     private Integer cp;
-    @Column(name = "Provinicia")
-    private String provinicia;
-    @Column(name = "Pais")
+    @Column(name = "provincia")
+    private String provincia;
+    @Column(name = "pais")
     private String pais;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "proveedorCIFProveedor")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "proveedorcifProveedor")
     private Collection<Articulo> articuloCollection;
 
     public Proveedor() {
     }
 
-    public Proveedor(Integer cIFProveedor) {
-        this.cIFProveedor = cIFProveedor;
+    public Proveedor(Integer cifProveedor) {
+        this.cifProveedor = cifProveedor;
     }
 
-    public Integer getCIFProveedor() {
-        return cIFProveedor;
+    public Integer getCifProveedor() {
+        return cifProveedor;
     }
 
-    public void setCIFProveedor(Integer cIFProveedor) {
-        this.cIFProveedor = cIFProveedor;
+    public void setCifProveedor(Integer cifProveedor) {
+        this.cifProveedor = cifProveedor;
     }
 
     public String getNombre() {
@@ -124,12 +124,12 @@ public class Proveedor implements Serializable {
         this.cp = cp;
     }
 
-    public String getProvinicia() {
-        return provinicia;
+    public String getProvincia() {
+        return provincia;
     }
 
-    public void setProvinicia(String provinicia) {
-        this.provinicia = provinicia;
+    public void setProvincia(String provincia) {
+        this.provincia = provincia;
     }
 
     public String getPais() {
@@ -142,8 +142,7 @@ public class Proveedor implements Serializable {
 
     @XmlTransient
     public Collection<Articulo> getArticuloCollection() {
-    	
-    	 return articuloCollection;
+        return articuloCollection;
     }
 
     public void setArticuloCollection(Collection<Articulo> articuloCollection) {
@@ -153,17 +152,18 @@ public class Proveedor implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (cIFProveedor != null ? cIFProveedor.hashCode() : 0);
+        hash += (cifProveedor != null ? cifProveedor.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Proveedor)) {
             return false;
         }
         Proveedor other = (Proveedor) object;
-        if ((this.cIFProveedor == null && other.cIFProveedor != null) || (this.cIFProveedor != null && !this.cIFProveedor.equals(other.cIFProveedor))) {
+        if ((this.cifProveedor == null && other.cifProveedor != null) || (this.cifProveedor != null && !this.cifProveedor.equals(other.cifProveedor))) {
             return false;
         }
         return true;
@@ -171,7 +171,7 @@ public class Proveedor implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.Proveedor[ cIFProveedor=" + cIFProveedor + " ]";
+        return "entities.Proveedor[ cifProveedor=" + cifProveedor + " ]";
     }
 
 }

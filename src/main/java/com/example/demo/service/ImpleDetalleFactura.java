@@ -20,11 +20,15 @@ public class ImpleDetalleFactura implements IDetalleFactura {
 	@Override
 	@Transactional
 	public List<DetalleFactura> findall() {
-		
+
 		return (List<DetalleFactura>) CrudDetalleFactura.findAll();
-		
-		
+
 	}
 
-	
+	@Override
+	public DetalleFactura findbyId(Integer id) {
+
+		return CrudDetalleFactura.findById(id).orElse(null);
+	}
+
 }

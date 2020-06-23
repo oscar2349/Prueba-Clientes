@@ -9,6 +9,36 @@
 	<div class="jumbotron">
 		<h3 class="font-weight-bold">Proveedores</h3>
 	</div>
+	
+	<table class="table table-striped">
+		<thead>
+			<tr class="font-weight-bold">
+				<th>CIF_Proveedor</th>
+				<th>Nombre</th>
+				<th>PrimerApellido</th>
+				<th>Ciudad</th>
+				<th>Codigo Postal</th>
+				<th>Direccion</th>
+				<th>Nombre Empresa</th>
+				<th>Provincia</th>
+				<th>Pais</th>
+		
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="Proveedor: ${Listado}">
+				<td th:text="${Proveedor.cifProveedor}"></td>
+				<td th:text="${Proveedor.nombre}"></td>
+				<td th:text="${Proveedor.apellido}"></td>
+				<td th:text="${Proveedor.ciudad}"></td>
+				<td th:text="${Proveedor.cp}"></td>
+				<td th:text="${Proveedor.dirrecion}"></td>
+				<td th:text="${Proveedor.nombreEmpresa}"></td>
+				<td th:text="${Proveedor.provincia}"></td>
+				<td th:text="${Proveedor.pais}"></td>
+			</tr>
+		</tbody>
+	</table>
 
 	<footer th:replace="Layout/Layout :: Footer"></footer>
 

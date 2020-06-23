@@ -10,6 +10,24 @@
 	<h3 class="font-weight-bold">Factura</h3>
 </div>
 
+	<table class="table table-striped">
+		<thead>
+			<tr class="font-weight-bold">
+				<th>Numero Factura</th>
+				<th>Fecha Factura</th>
+				<th>Cliente CIF cliente</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="factura: ${Listado}">
+				<td th:text="${factura.numeroFactura}"></td>
+				<td th:text="${factura.fechaFactura}"></td>
+				<td th:text="${factura.clienteCifCliente}"></td>
+						
+			</tr>
+		</tbody>
+	</table>
+
 <footer th:replace="Layout/Layout :: Footer"></footer>
 
 </body>

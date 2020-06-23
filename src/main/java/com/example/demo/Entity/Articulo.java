@@ -2,6 +2,8 @@ package com.example.demo.Entity;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,6 +20,10 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+/**
+ * 
+ * @author Sammy Guergachi <sguergachi at gmail.com>
+ */
 @Entity
 @Table(name = "Articulo")
 @XmlRootElement
@@ -32,20 +38,16 @@ public class Articulo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "Cod_Articulo")
+    @Column(name = "cod_Articulo")
     private Integer codArticulo;
-    
-    @Column(name = "NombreArticulo")
+    @Column(name = "nombreArticulo")
     private String nombreArticulo;
-    
-    @Column(name = "Caracteristicas")
+    @Column(name = "caracteristicas")
     private String caracteristicas;
-    
-    @JoinColumn(name = "Proveedor_CIF_Proveedor", referencedColumnName = "CIF_Proveedor")
+    @JoinColumn(name = "Proveedor_cif_Proveedor", referencedColumnName = "cif_Proveedor")
     @ManyToOne(optional = false)
-    private Proveedor proveedorCIFProveedor;
-    
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "articuloCodArticulo")
+    private Proveedor proveedorcifProveedor;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "articulocodArticulo")
     private Collection<DetalleFactura> detalleFacturaCollection;
 
     public Articulo() {
@@ -79,12 +81,12 @@ public class Articulo implements Serializable {
         this.caracteristicas = caracteristicas;
     }
 
-    public Integer getProveedorCIFProveedor() {
-        return proveedorCIFProveedor.getCIFProveedor();
+    public Proveedor getProveedorcifProveedor() {
+        return proveedorcifProveedor;
     }
 
-    public void setProveedorCIFProveedor(Proveedor proveedorCIFProveedor) {
-        this.proveedorCIFProveedor = proveedorCIFProveedor;
+    public void setProveedorcifProveedor(Proveedor proveedorcifProveedor) {
+        this.proveedorcifProveedor = proveedorcifProveedor;
     }
 
     @XmlTransient
@@ -92,7 +94,7 @@ public class Articulo implements Serializable {
         return detalleFacturaCollection;
     }
 
-    public void setDetalleFacturaCollection(Collection<DetalleFactura> detalleFacturaCollection) {
+    public void setDetalleFacturaCollection(List<DetalleFactura> detalleFacturaCollection) {
         this.detalleFacturaCollection = detalleFacturaCollection;
     }
 

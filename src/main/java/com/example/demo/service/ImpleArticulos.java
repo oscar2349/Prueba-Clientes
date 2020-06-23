@@ -23,5 +23,10 @@ public class ImpleArticulos implements IArticulos {
 		
 	}
 
+	@Override
+	public Articulo findOne(Integer id) {
+		return CrudArticulo.findById(id).orElse(null);
+	}
+
 	
 }

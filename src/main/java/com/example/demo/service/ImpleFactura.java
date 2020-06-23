@@ -20,7 +20,17 @@ public class ImpleFactura implements IFactura {
 		
 		return (List<Factura>) CrudFactura.findAll();
 		
+	}
+
+	@Override
+	public void save(Factura Factura) {
+		CrudFactura.save(Factura);
 		
+	}
+
+	@Override
+	public Factura findOne(Integer id) {
+		return CrudFactura.findById(id).orElse(null);
 	}
 
 	

@@ -2,8 +2,9 @@ package com.example.demo.Entity;
 
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -32,19 +33,23 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Factura implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Column(name = "FechaFactura")
-    @Temporal(TemporalType.TIMESTAMP)
+    
+    @Column(name = "fechaFactura")
+    //@Temporal(TemporalType.TIMESTAMP)
     private Date fechaFactura;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "NumeroFactura")
+    @Column(name = "numeroFactura")
     private Integer numeroFactura;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "facturaNumeroFactura")
-    private Collection<DetalleFactura> detalleFacturaCollection;
-    @JoinColumn(name = "Cliente_CIF_Cliente", referencedColumnName = "CIF_Cliente")
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "facturanumeroFactura")
+    private List<DetalleFactura> detalleFacturaCollection;
+    
+    @JoinColumn(name = "cliente_cif_cliente", referencedColumnName = "cif_cliente")
     @ManyToOne(optional = false)
-    private Cliente clienteCIFCliente;
+    private Cliente clienteCifCliente;
 
     public Factura() {
     }
@@ -70,20 +75,20 @@ public class Factura implements Serializable {
     }
 
     @XmlTransient
-    public Collection<DetalleFactura> getDetalleFacturaCollection() {
+    public List<DetalleFactura> getDetalleFacturaList() {
         return detalleFacturaCollection;
     }
 
-    public void setDetalleFacturaCollection(Collection<DetalleFactura> detalleFacturaCollection) {
-        this.detalleFacturaCollection = detalleFacturaCollection;
+    public void setDetalleFacturaList(List<DetalleFactura> detalleFactura) {
+        this.detalleFacturaCollection = detalleFactura;
     }
 
-    public Cliente getClienteCIFCliente() {
-        return clienteCIFCliente;
+    public Cliente getClienteCifCliente() {
+        return clienteCifCliente;
     }
 
-    public void setClienteCIFCliente(Cliente clienteCIFCliente) {
-        this.clienteCIFCliente = clienteCIFCliente;
+    public void setClienteCifCliente(Cliente clienteCifCliente) {
+        this.clienteCifCliente = clienteCifCliente;
     }
 
     @Override
@@ -91,19 +96,6 @@ public class Factura implements Serializable {
         int hash = 0;
         hash += (numeroFactura != null ? numeroFactura.hashCode() : 0);
         return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Factura)) {
-            return false;
-        }
-        Factura other = (Factura) object;
-        if ((this.numeroFactura == null && other.numeroFactura != null) || (this.numeroFactura != null && !this.numeroFactura.equals(other.numeroFactura))) {
-            return false;
-        }
-        return true;
     }
 
     @Override
